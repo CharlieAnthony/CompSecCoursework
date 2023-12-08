@@ -1,6 +1,6 @@
 <?php
 
-echo "
+    echo "
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -54,12 +54,16 @@ echo "
                     <input id='txtSurname' name='txtSurname' type='text' />
                 </div>
                 <div class='form-group'>
-                    <label for='txtEmail'>Email:</label>
-                    <input id='txtEmail' name='txtEmail' type='text' />
-                </div>
-                <div class='form-group'>
                     <label for='txtPhoneNumber'>Phone Number:</label>
                     <input id='txtPhoneNumber' name='txtPhoneNumber' type='text' />
+                </div>  
+                <div class='form-group'>
+                    <label for='txtEmail1'>Email:</label>
+                    <input id='txtEmail1' name='txtEmail1' type='text' />
+                </div>
+                <div class='form-group'>
+                    <label for='txtEmail2'>Confirm Email:</label>
+                    <input id='txtEmail2' name='txtEmail2' type='text' />
                 </div>
                 <div class='form-group'>
                     <label for='txtPassword1'>Password:</label>
