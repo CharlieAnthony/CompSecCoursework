@@ -1,0 +1,24 @@
+Users Table
+- 'UserID' -> Primary Key, Integer, Auto Increment
+- 'Forename' -> String
+- 'Surname' -> String
+- 'Email' -> String
+- 'PhoneNumber' -> String
+- 'Password' -> String
+- 'RegistrationDate' -> Date
+- 'LastLoginDate' -> Date
+- 'IsAdmin' -> Boolean
+
+EvaluationRequests Table
+- 'RequestID' -> Primary Key, Integer, Auto Increment
+- 'UserID' -> Foreign Key, Integer
+- 'Description' -> String
+- 'RequestDate' -> Date
+- 'Status' -> String
+- 'EvaluationResult' -> String
+
+Photos Table
+- 'PhotoID' -> Primary Key, Integer, Auto Increment
+- 'RequestID' -> Foreign Key, Integer
+- 'PhotoPath' -> String
+- 'UploadDate' -> Date
