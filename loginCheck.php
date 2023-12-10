@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     // Server and db connection
     $servername = "localhost";
     $rootuser = "root";
@@ -10,7 +12,7 @@
     $conn = new mysqli($servername, $rootuser, $rootPassword, $db);
 
     // values come from user, through web form
-    $username = $_POST['txtUsername'];
+    $email = $_POST['txtEmail'];
     $password = $_POST['txtPassword'];
 
     // Check connection
@@ -20,7 +22,7 @@
     }
 
     // query
-    $userQuery = "SELECT * FROM SystemUser";
+    $userQuery = "SELECT * FROM Users";
     $userResult = $conn->query($userQuery);
 
     // flag variable
@@ -31,13 +33,18 @@
     {
         while($userRow = $userResult -> fetch_assoc())
         {
-            if($userRow['Username'] == $username)
+            if($userRow['Email'] == $email)
             {
                 $userFound = 1;
-                if (password_verify($password, $userRow['Password']))
+                if (password_verify($password, $userRow['PasswordHash']))
                 {
-                    echo "Hi" .$username . "!";
-                    echo "<br/>Welcome to my website";
+                    // Store user data in session
+                    $_SESSION['email'] = $email;
+                    $_SESSION['isAdmin'] = $userRow['IsAdmin']; // Assuming 'IsAdmin' is the column name for admin status
+
+                    // Redirect to landing page
+                    header('Location: landingPage.php');
+                    exit;
                 }
                 else
                 {
