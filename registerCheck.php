@@ -102,8 +102,13 @@ $hashed_password = password_hash($password1, PASSWORD_DEFAULT);
 $sql = "INSERT INTO Users (Forename, Surname, PhoneNumber, Email, PasswordHash, RegistrationDate, LastLoginDate) 
 VALUES ('$forename', '$surname', '$phone', '$email1', '$hashed_password', NOW(), NOW())";
 if ($connection->query($sql) === TRUE) {
-    echo "New record created successfully";
-    header('Location: loginForm.php');
+    // Store user data in session
+    $_SESSION['isAdmin'] = $userRow['IsAdmin']; // Assuming 'IsAdmin' is the column name for admin status
+    $_SESSION['forename'] = $forename;
+    $_SESSION['userID'] = $userRow['UserID'];
+    // Redirect to landing page
+    header('Location: landingPage.php');
+    exit;
 }
 
 ?>

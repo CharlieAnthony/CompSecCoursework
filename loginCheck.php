@@ -39,9 +39,9 @@
                 if (password_verify($password, $userRow['PasswordHash']))
                 {
                     // Store user data in session
-                    $_SESSION['email'] = $email;
                     $_SESSION['isAdmin'] = $userRow['IsAdmin']; // Assuming 'IsAdmin' is the column name for admin status
-
+                    $_SESSION['forename'] = $userRow['Forename'];
+                    $_SESSION['userID'] = $userRow['UserID'];
                     // Redirect to landing page
                     header('Location: landingPage.php');
                     exit;
