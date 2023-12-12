@@ -15,7 +15,7 @@ EvaluationRequests Table
 - 'Description' -> String
 - 'RequestDate' -> Date
 - 'Status' -> String
-- 'EvaluationResult' -> String
+- 'ContactMethod' -> String
 
 Photos Table
 - 'PhotoID' -> Primary Key, Integer, Auto Increment

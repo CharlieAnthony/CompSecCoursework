@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     // Check if user is logged in
     if (!isset($_SESSION['userID'])) {
@@ -12,24 +13,61 @@
         <link rel='stylesheet' type='text/css' href='style.css'>
         <div class='form-container'>
             
-            <form action='loginCheck.php' method='POST'>
+            <form action='evalCheck.php' method='POST' enctype='multipart/form-data'>   
                 <h1>Evaluation Request</h1>
                 <div class='form-group'>
-                    <label for='txtEmail'>Email:</label>
-                    <input id='txtEmail' name='txtEmail' type='text' />
+                    <label for='txtDescription'>Item Description:</label>
+                    <textarea id='txtDescription' name='txtDescription' maxlength='250' rows='5' cols='50' style='resize: none;'></textarea>
                 </div>
                 <div class='form-group'>
-                    <label for='txtPassword'>Password:</label>
-                    <input id='txtPassword' name='txtPassword' type='password' />
+                    <label for='file'>Upload Image:</label>
+                    <input id='file' name='file' type='file' onchange='checkFileSize(this)' accept='.png, .jpg, .jpeg' />
+                    <p>
+                        Image must be:<ul>
+                            <li>png, jpg or jpeg</li>
+                            <li>less than 2MB</li>
+                        </ul>
+                    </p>
                 </div>
                 <div class='form-group'>
-                    <input type='submit' value='Login'>
-                </div>
+                    <label for='txtContactMethod'>Preferred Contact Method:</label>
+                    <select id='txtContactMethod' name='txtContactMethod'>
+                        <option value='Phone'>Phone</option>
+                        <option value='Email'>Email</option>
+                    </select>
+                </div>";
+
+    // Display errors if there are any
+    echo "<div class='form-group'>";
+    if (isset($_SESSION['errors'])) {
+        foreach ($_SESSION['errors'] as $error) {
+            echo "<p style='color:red;'>$error</p>";
+        }
+        unset($_SESSION['errors']); // remove the errors from session
+    }
+    echo "</div>";
+    echo "
                 <div class='form-group'>
-                    Not registered yet? Click <a href='registerForm.php'>Here</a>
+                    <input type='submit' value='Submit Request'>
                 </div>
             </form>
-            </div>
+        </div>
         ";
-
 ?>
+
+<script>
+    function checkFileSize(input) {
+        // Get the selected file
+        var file = input.files[0];
+
+        // Check the file size (2MB in this case)
+        if (file.size > 2 * 1024 * 1024) {
+            alert("File size is too large. Maximum allowed size is 2MB.");
+            // Clear the input
+            input.value = "";
+        } else {
+            // Set the value of the hidden input field to the path of the uploaded file
+            document.getElementById('imagePath').value = URL.createObjectURL(file);
+        }
+    }
+</script>
