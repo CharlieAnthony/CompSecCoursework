@@ -23,7 +23,7 @@
 
     echo "<a href='evalRequest.php' class='button'>Evaluation Request</a><br/>";
     if ($_SESSION['isAdmin']) {
-        echo "<a href='admin.php' class='button'>View Listings</a><br/>";
+        echo "<a href='viewListings.php' class='button'>View Listings</a><br/>";
     }
     echo "<a href='logout.php' class='button'>Logout</a></p>";
 

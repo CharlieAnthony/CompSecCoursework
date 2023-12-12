@@ -8,7 +8,7 @@ body {
     padding: 0;
 }
 .form-container {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     max-width: 500px;
@@ -35,4 +35,7 @@ body {
 }
 .form-group input[type='submit']:hover {
     background-color: #45a049;
+}
+.th{
+    width: 200px;
 }
