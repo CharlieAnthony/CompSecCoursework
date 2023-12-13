@@ -52,6 +52,23 @@
     $email = $_POST['txtEmail'];
     $password = $_POST['txtPassword'];
 
+    $errors = [];
+
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+    $recaptchaSecretKey = '6LdgfDApAAAAAC9impHCpuOHzb1dzolWFsiuIzt9';
+
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptchaSecretKey.'&response='.$recaptchaResponse);
+    $responseData = json_decode($verifyResponse);
+
+    if(!$responseData->success) {
+        // reCAPTCHA validation failed, handle accordingly
+        $errors[] = "reCAPTCHA validation failed!<br/>";
+    }
+
+    if ($email == "" or $password == "") {
+        $errors[] = "Email or password is blank!<br/>";
+    }
+
     // Check connection
     if($conn->connect_error)
     {
@@ -96,7 +113,7 @@
                 }
                 else
                 {
-                    echo "Wrong Password";
+                    $errors[] = "Wrong Password!<br/>";
                 }
             }
         }
@@ -104,7 +121,13 @@
 
     if ($userFound == 0)
     {
-        echo "This user was not found in our database";
+        $errors[] = "This user was not found in our database!<br/>";
+    }
+
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        header('Location: loginForm.php');
+        exit;
     }
 
 ?>

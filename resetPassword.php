@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     $token = $_GET['token'];
 
     echo "<link rel='stylesheet' type='text/css' href='style.css'>

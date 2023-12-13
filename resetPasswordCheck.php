@@ -58,4 +58,3 @@
     // Redirect to login form
     header('Location: loginForm.php');
     exit;
-
