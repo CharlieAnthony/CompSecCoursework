@@ -30,12 +30,13 @@
                 </div>
                 <div class='form-group'>
                     <label for='txtPassword1'>Password:</label>
-                    <input id='txtPassword1' name='txtPassword1' type='password' />
+                    <input id='txtPassword1' name='txtPassword1' type='password' oninput='passwordStrength(this.value)'/>
                 </div>
                 <div class='form-group'>
                     <label for='txtPassword2'>Confirm Password:</label>
-                    <input id='txtPassword2' name='txtPassword2' type='password' />
-                </div>";
+                    <input id='txtPassword2' name='txtPassword2' type='password'/>
+                </div>
+                <div id='passwordStrength'></div>";
 
         // Display errors if there are any
         echo "<div class='form-group'>";
@@ -52,6 +53,38 @@
                     <input type='submit' value='Create Account'>
                 </div>
             </form>
-            </div>";
+            </div>
+            <script>
+            function passwordStrength(password){
+                let s = 0;
+                if (password.length >= 8) {
+                    s++;
+                }
+                if (password.match(/[a-z]/)) {
+                    s++;
+                }
+                if (password.match(/[A-Z]/)) {
+                    s++;
+                }
+                if (password.match(/[0-9]/)) {
+                    s++;
+                }
+                if (password.match(/[\'^£$%&*()}{@#~?><>.,|=_+!-]/)) {
+                    s++;
+                }
+                if (s == 0) {
+                    document.getElementById('passwordStrength').innerHTML = '';
+                }
+                if (s == 1) {
+                    document.getElementById('passwordStrength').innerHTML = '<p style=\'color:red;\'>Weak Password</p>';
+                }
+                if (1 < s && s <= 4) {
+                    document.getElementById('passwordStrength').innerHTML = '<p style=\'color:orange;\'>Average Password</p>';
+                }
+                if (s == 5) {
+                    document.getElementById('passwordStrength').innerHTML = '<p style=\'color:green;\'>Strong Password</p>';
+                }
+            }
+            </script>";
 
 ?>

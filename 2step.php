@@ -11,11 +11,13 @@
     }
 
     echo "<link rel='stylesheet' type='text/css' href='style.css'>
+          <div class='form-container'>
           <h1>2-Step Authentication</h1>
           <p>Enter the code sent to your Email</p>
           <form action='2stepCheck.php' method='POST'>
-          <input name='txtCode' type='text' />
+          <input name='txtCode' type='text' /><br/>
           <br/> <input type='submit' value='Submit'>
-          </form>";
+          </form>
+          </div>";
 
 ?>

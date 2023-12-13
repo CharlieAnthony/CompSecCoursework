@@ -54,16 +54,16 @@
 
     $errors = [];
 
-    $recaptchaResponse = $_POST['g-recaptcha-response'];
-    $recaptchaSecretKey = '6LdgfDApAAAAAC9impHCpuOHzb1dzolWFsiuIzt9';
+//    $recaptchaResponse = $_POST['g-recaptcha-response'];
+//    $recaptchaSecretKey = '6LfagDApAAAAAIxrsV3hw8apLf7_Wwze7-X-0W4k';
 
-    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptchaSecretKey.'&response='.$recaptchaResponse);
-    $responseData = json_decode($verifyResponse);
+//    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptchaSecretKey.'&response='.$recaptchaResponse);
+//    $responseData = json_decode($verifyResponse);
 
-    if(!$responseData->success) {
-        // reCAPTCHA validation failed, handle accordingly
-        $errors[] = "reCAPTCHA validation failed!<br/>";
-    }
+//    if(!$responseData->success) {
+//        // reCAPTCHA validation failed, handle accordingly
+//        $errors[] = "reCAPTCHA validation failed!<br/>";
+//    }
 
     if ($email == "" or $password == "") {
         $errors[] = "Email or password is blank!<br/>";
@@ -97,6 +97,7 @@
                         $_SESSION['forename'] = $userRow['Forename'];
                         $_SESSION['userID'] = $userRow['UserID'];
                         // Redirect to landing page
+                        $conn->query("UPDATE Users SET LastLoginDate = NOW() WHERE UserID = ".$_SESSION['userID']);
                         header('Location: landingPage.php');
                         exit;
                     }else{
@@ -107,6 +108,7 @@
                         $_SESSION['userID'] = $userRow['UserID'];
                         $_SESSION['code'] = $code;
                         $_SESSION['email'] = $email;
+                        $conn->query("UPDATE Users SET LastLoginDate = NOW() WHERE UserID = ".$_SESSION['userID']);
                         header('Location: 2step.php');
                         exit;
                     }

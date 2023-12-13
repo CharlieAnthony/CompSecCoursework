@@ -13,10 +13,11 @@
                     </div>
                     <div class='form-group'>
                         <label for='txtPassword'>Password:</label>
-                        <input id='txtPassword' name='txtPassword' type='password' />
+                        <input id='txtPassword' name='txtPassword' type='password'/>
                     </div>
-                    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
-                    <div class='g-recaptcha' data-sitekey='6LdgfDApAAAAAPrJ6LkdLGNlVcvl7nIrwsBFDHQh'></div>";
+                    <div id='passwordStrengthIndicator'></div>
+                    <! --<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+                    <div class='g-recaptcha' data-sitekey='6LfagDApAAAAAP1GU_VAsg3TP4IKaHnWSa129l8o'></div> -->";
     // Display errors if there are any
     echo "<div class='form-group'>";
     if (isset($_SESSION['errors'])) {
@@ -31,7 +32,8 @@
                         <input type='submit' value='Login'>
                     </div>
                     <div class='form-group'>
-                        Not registered yet? Click <a href='registerForm.php'>Here</a>
+                        Not registered yet? Click <a href='registerForm.php'>Here</a><br/><br/>
+                        <a href='forgotPassword.php'>Forgot Password?</a>
                     </div>
                 </form>
             </div>

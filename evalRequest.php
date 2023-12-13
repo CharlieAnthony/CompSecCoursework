@@ -1,10 +1,33 @@
 <?php
     session_start();
 
+    // Server and db connection
+    $servername = "localhost";
+    $rootuser = "root";
+    $db = "AntiEval";
+    $rootPassword = "";
+
+    // Create connection
+    $conn = new mysqli($servername, $rootuser, $rootPassword, $db);
+
     // Check if user is logged in
     if (!isset($_SESSION['userID'])) {
         echo "You are not logged in!";
         // Redirect to login page
+        header('Location: loginForm.php');
+        exit;
+    }
+
+    $userID = $_SESSION['userID'];
+
+    // check if user has timed out
+    $result = $conn->query("SELECT LastLoginDate FROM Users WHERE UserID = '$userID'");
+    $row = $result->fetch_assoc();
+    $lastLogin = strtotime($row['LastLoginDate']);
+    $now = time();
+    $timeoutLength = 30 * 60;
+    if ($now - $lastLogin > $timeoutLength) {
+        session_destroy();
         header('Location: loginForm.php');
         exit;
     }

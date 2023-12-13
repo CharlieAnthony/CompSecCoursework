@@ -14,8 +14,6 @@
     $image_path = "";
     $contact_method = $_POST['txtContactMethod'];
 
-    echo $contact_method;
-
     // array for returning errors
     $errors = [];
 
@@ -55,7 +53,6 @@
                         // Move the file to the desired directory
                         if (move_uploaded_file($file['tmp_name'], 'uploads/' . $newName)) {
                             $image_path = 'uploads/' . $newName;
-                            echo "File uploaded successfully.";
                         } else {
                             $errors[] = "Failed to upload file.";
                             $image_path = "";
