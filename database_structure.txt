@@ -22,3 +22,9 @@ Photos Table
 - 'RequestID' -> Foreign Key, Integer
 - 'PhotoPath' -> String
 - 'UploadDate' -> Date
+
+ResetRequests Table
+- 'RequestID' -> Primary Key, Integer, Auto Increment
+- 'Email' -> String
+- 'RequestDate' -> Date
+- 'Token' -> String
