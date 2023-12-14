@@ -31,7 +31,7 @@
         // Check for errors
         if ($file['error'] == 0) {
 
-            // Makes sure file extension is png or jpeg
+            // Makes sure file extension is png, jpg or jpeg
             $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
             if ($ext != 'PNG' && $ext != 'JPEG' && $ext != 'JPG') {
                 $errors[] = "Invalid file type. Only png, jpg and jpeg images are allowed.<br/>";
@@ -50,7 +50,7 @@
                         // Rename the file
                         $newName = uniqid() . '.' . $ext;
 
-                        // Move the file to the desired directory
+                        // Move the file to uploads directory
                         if (move_uploaded_file($file['tmp_name'], 'uploads/' . $newName)) {
                             $image_path = 'uploads/' . $newName;
                         } else {
@@ -82,6 +82,7 @@
         }
     }
 
+    // if there are errors, back to evalRequest
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
         header('Location: evalRequest.php');

@@ -35,12 +35,14 @@
         {
             if($userRow['Email'] == $email)
             {
+                // generate token and put in table
                 $userFound = 1;
                 $token = rand(100000, 999999);
                 $conn->query("INSERT INTO ResetRequests (Email, Token, RequestDate) VALUES ('$email', '$token', NOW())");
 
                 $_SESSION['email'] = $email;
 
+                // send email
                 $mail = new PHPMailer(true);
                 try{
                     $mail->SMTPDebug = 0;

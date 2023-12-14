@@ -10,6 +10,7 @@
         exit;
     }
 
+    // Display 2step form
     echo "<link rel='stylesheet' type='text/css' href='style.css'>
           <div class='form-container'>
           <h1>2-Step Authentication</h1>

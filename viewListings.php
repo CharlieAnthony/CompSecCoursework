@@ -8,22 +8,22 @@
 
     $conn = mysqli_connect($mysql_host, $mysql_user, $mysql_password, $mysql_database) or die ("could not connect to the server");
 
-echo "
-        <style>
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 5px;
-                text-align: left;
-                vertical-align: top;
-                width: 300px;
-                max-width: 300px;
-                word-wrap: break-word;
-            }
-            
-        </style>";
+    echo "
+            <style>
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 5px;
+                    text-align: left;
+                    vertical-align: top;
+                    width: 300px;
+                    max-width: 300px;
+                    word-wrap: break-word;
+                }
+                
+            </style>";
 
     if (!isset($_SESSION['userID'])) {
         echo "You are not logged in!";
@@ -96,4 +96,5 @@ echo "
 
     echo "</div></table>";
     echo "<br/>Click <a href='landingPage.php'>here</a> to go back to the landing page.<br/>";
+
 ?>

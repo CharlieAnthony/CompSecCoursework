@@ -54,16 +54,14 @@
 
     $errors = [];
 
-//    $recaptchaResponse = $_POST['g-recaptcha-response'];
-//    $recaptchaSecretKey = '6LfagDApAAAAAIxrsV3hw8apLf7_Wwze7-X-0W4k';
-
-//    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptchaSecretKey.'&response='.$recaptchaResponse);
-//    $responseData = json_decode($verifyResponse);
-
-//    if(!$responseData->success) {
-//        // reCAPTCHA validation failed, handle accordingly
-//        $errors[] = "reCAPTCHA validation failed!<br/>";
-//    }
+    // reCAPTCHA validation
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+    $recaptchaSecretKey = '6LfagDApAAAAAIxrsV3hw8apLf7_Wwze7-X-0W4k';
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$recaptchaSecretKey.'&response='.$recaptchaResponse);
+    $responseData = json_decode($verifyResponse);
+    if(!$responseData->success) {
+        $errors[] = "reCAPTCHA validation failed!<br/>";
+    }
 
     if ($email == "" or $password == "") {
         $errors[] = "Email or password is blank!<br/>";

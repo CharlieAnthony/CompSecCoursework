@@ -1,3 +1,5 @@
+** This document is purely documentation to explain the database structure **
+
 Users Table
 - 'UserID' -> Primary Key, Integer, Auto Increment
 - 'Forename' -> String

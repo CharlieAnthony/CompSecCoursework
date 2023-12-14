@@ -12,7 +12,6 @@
 
     // Check if user is logged in
     if (!isset($_SESSION['userID'])) {
-        echo "You are not logged in!";
         // Redirect to login page
         header('Location: loginForm.php');
         exit;
@@ -32,6 +31,7 @@
         exit;
     }
 
+    // display form
     echo "
         <link rel='stylesheet' type='text/css' href='style.css'>
         <div class='form-container'>

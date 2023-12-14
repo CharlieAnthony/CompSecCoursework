@@ -4,6 +4,7 @@
 
     $token = $_GET['token'];
 
+    // html form
     echo "<link rel='stylesheet' type='text/css' href='style.css'>
     <div class='form-container'>
     <form action='resetPasswordCheck.php' method='POST'>

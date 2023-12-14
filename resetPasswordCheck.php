@@ -21,7 +21,6 @@
     }
 
     // password check stuff
-
     if(empty($errors)) {
         // check if password is at least 8 characters long
         if (strlen($password1) < 8) {

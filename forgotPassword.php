@@ -1,5 +1,6 @@
 <?php
 
+    // display form
     echo "<link rel='stylesheet' type='text/css' href='style.css'>
     <div class='form-container'>
     <form action='forgotPasswordCheck.php' method='POST'>

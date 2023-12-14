@@ -19,6 +19,7 @@
 
     if (isset($_POST['txtCode'])) {
         $code = $_POST['txtCode'];
+        // Check if code is correct
         if ($code == $_SESSION['code']) {
             $conn->query("UPDATE Users SET LastLoginDate = NOW() WHERE UserID = ".$_SESSION['userID']);
             unset($_SESSION['code']);

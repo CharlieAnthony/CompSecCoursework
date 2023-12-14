@@ -16,8 +16,8 @@
                         <input id='txtPassword' name='txtPassword' type='password'/>
                     </div>
                     <div id='passwordStrengthIndicator'></div>
-                    <! --<script src='https://www.google.com/recaptcha/api.js' async defer></script>
-                    <div class='g-recaptcha' data-sitekey='6LfagDApAAAAAP1GU_VAsg3TP4IKaHnWSa129l8o'></div> -->";
+                    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
+                    <div class='g-recaptcha' data-sitekey='6LfagDApAAAAAP1GU_VAsg3TP4IKaHnWSa129l8o'></div>";
     // Display errors if there are any
     echo "<div class='form-group'>";
     if (isset($_SESSION['errors'])) {
